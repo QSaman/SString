@@ -16,7 +16,8 @@ SString::SString(const char* str) : SString{std::strlen(str)}
 
 SString::SString(const SString& str) : SString{str.m_len}
 {
-    std::strncpy(m_str, str.m_str, m_len + 1);
+    std::strncpy(m_str, str.m_str, m_len);
+    m_str[m_len] = '\0';
 }
 
 SString::SString(SString&& str)
