@@ -40,8 +40,6 @@ class SString
      * For resolving these problems I put explicit in front of conversion operator
      * */
 
-    friend bool operator==(const SString& left, const SString& right);
-    friend std::ostream& operator<<(std::ostream& out, const SString& str);
     friend SString operator+(const SString& left, const SString& right);
 public:
     SString(const char* str = "");
@@ -65,4 +63,6 @@ private:
     char* m_str;
 };
 
+std::ostream& operator<<(std::ostream& out, const SString& str);
+bool operator==(const SString& left, const SString& right);
 }

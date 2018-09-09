@@ -7,13 +7,13 @@ namespace saman
 
 std::ostream& operator<<(std::ostream& out, const SString& str)
 {
-    return out << str.m_str;	//In GCC 8.1.1 I spend some time to understand why this a infinite recursion!
+    return out << str.c_str();	//In GCC 8.1.1 I spend some time to understand why this a infinite recursion!
                                 //I didn't included iostream!
 }
 
 bool operator==(const SString& left, const SString& right)
 {
-    return std::strcmp(left.m_str, right.m_str) == 0;
+    return std::strcmp(left.c_str(), right.c_str()) == 0;
 }
 
 SString operator+(const SString& left, const SString& right)
