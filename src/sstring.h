@@ -38,6 +38,9 @@ class SString
      *      "foo" to SString using conversion constructor. Again it's a compile error.
      *
      * For resolving these problems I put explicit in front of conversion operator
+     *
+     * Note: See operator<< and notice the compiler doesn't use conversion constructor to convert a
+     * char* into SString! So std::cout << "foo" uses the built-in operator not from SString
      * */
 
     friend SString operator+(const SString& left, const SString& right);
