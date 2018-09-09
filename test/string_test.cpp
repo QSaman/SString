@@ -6,6 +6,7 @@
 
 TEST(SString, DefaultConstructor)
 {
+    std::string r;
     saman::SString str;
     EXPECT_EQ(str[0], '\0');
     char ch;
@@ -71,6 +72,16 @@ TEST(SString, OperatorPlus)
     EXPECT_EQ(res[10], '\0');
     EXPECT_TRUE("abc1234567" == res);
 }
+
+TEST(SString, OperatorPlusSymmetric)
+{
+    saman::SString s1{"Foo"};
+    auto r1 = s1 + "Bar";
+    EXPECT_TRUE(r1 == "FooBar");
+    auto r2 = "Bar" + s1;
+    EXPECT_TRUE("BarFoo" == r2);
+}
+
 TEST(SString, OperatorPlusEqual)
 {
     saman::SString s1{"abc"};
@@ -83,6 +94,13 @@ TEST(SString, Substr)
 {
     saman::SString str{"saman"};
     EXPECT_TRUE("ama" == str(1, 3));
+}
+
+TEST(SString, OSTREAM)
+{
+    saman::SString str{"foo"};
+    std::cout << "bar" << std::endl;
+    std::cout << str << std::endl;
 }
 
 int main(int argc, char* argv[])
